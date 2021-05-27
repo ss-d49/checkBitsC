@@ -5,4 +5,4 @@ Works on shared libraries like DLLs as well.
 
 Usage:
 
-checkBits <input>
+checkBits input
