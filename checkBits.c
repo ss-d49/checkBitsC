@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
-
+#define BYTES 2
 int main (int argc, char **argv)
 {
   FILE *EXE;
-  size_t bytes = 2, bytes_in;
-  unsigned char buf[bytes];
+  size_t bytes_in;
+  unsigned char buf[BYTES];
   const unsigned char header64[] = { 0x64, 0x86 };
   const unsigned char header86[] = { 0x4c, 0x01 };
 
@@ -21,7 +21,7 @@ int main (int argc, char **argv)
   if (EXE = fopen (argv[1], "rb"))
   {
     fseek(EXE, 132, SEEK_SET);
-    bytes_in = fread (buf, 1, bytes, EXE);
+    bytes_in = fread (buf, 1, BYTES, EXE);
     fclose (EXE);
   }
   else
@@ -30,11 +30,11 @@ int main (int argc, char **argv)
     exit(1);
   }
 
-  if (memcmp(buf, header64, bytes) == 0)
+  if (memcmp(buf, header64, BYTES) == 0)
   {
     printf("%s\n","File is 64 Bit.");
   }
-  else if (memcmp(buf, header86, bytes) == 0)
+  else if (memcmp(buf, header86, BYTES) == 0)
   {
     printf("%s\n","File is 32 Bit.");
   }
