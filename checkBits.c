@@ -43,6 +43,5 @@ int main (int argc, char **argv)
     printf("%s\n","File bitness is unknown.");
   }
 
-  free (buf);
   exit(0);
 }
